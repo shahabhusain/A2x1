@@ -5,6 +5,7 @@ import {
   useGsapFeatureRightShutterUnveil,
   useGsapTitleUnveil,
 } from "../../hooks/gsap";
+
 const Featured = () => {
   const featureRef = useRef(null);
   const sectionTitleRef = useRef(null);
@@ -17,15 +18,12 @@ const Featured = () => {
 
   return (
     <section className="featured wrapper" ref={featureRef}>
-      <h2 className="section-title " ref={sectionTitleRef}>
-        Featured
-      </h2>
       <div className="features">
         <div className="features-left">
-          <span className="features-title">90's telephone</span>
+          <span className="features-title">Healthcare at Your Fingertips</span>
           <img
-            src="https://images.pexels.com/photos/2587464/pexels-photo-2587464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Black Rotary Telephone on White Surface"
+            src="https://img.freepik.com/premium-photo/doctor-with-clipboard-consulting-patient-appointment-clinic_495423-79809.jpg?w=1380"
+            alt="Doctor consulting patient in clinic"
           />
           <span
             className="feature-shutter-left"
@@ -33,11 +31,10 @@ const Featured = () => {
           ></span>
         </div>
         <div className="features-right">
-          <span className="features-title">90's Cassette player</span>
+          <span className="features-title">Compassionate Care for All</span>
           <img
-            src="https://images.pexels.com/photos/5158207/pexels-photo-5158207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Confident youthful multiracial guys listening to old songs on retro record player
-            "
+            src="https://img.freepik.com/premium-photo/arabian-doctor-standing-front-her-team-hospital_155404-23.jpg?w=1380"
+            alt="Doctor with healthcare team in hospital"
           />
           <span
             className="feature-shutter-right"

@@ -86,9 +86,9 @@ const Navbar = () => {
 					<div className="flex h-full items-center">
 						<div className="hidden md:block">
 							{navItems.map((item) => (
-								<Link
+								<Link 
 									key={item.name}
-									className="nav-hover-btn"
+									className="nav-hover-btn textb"
 									to={item.link}
 								>
 									{item.name}
@@ -101,7 +101,7 @@ const Navbar = () => {
 							{[1, 2, 3, 4].map((bar) => (
 								<div
 									key={bar}
-									className={`indicator-line ${isIndicatorActive ? 'active' : ''}`}
+									className={`indicator-line ${isIndicatorActive ? '' : ' text-black'}`}
 									style={{ animationDelay: `${bar * 0.2}s` }}
 								/>
 							))}
