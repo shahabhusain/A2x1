@@ -28,18 +28,23 @@ const About = () => {
 	return (
 		<div id="about" className="min-h-screen w-screen">
 			<div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-				<h2 className="font-general text-sm uppercase md:text-[10px]">Welcome to Enigma</h2>
+				<h2 className="font-general text-sm uppercase md:text-[10px]">Welcome to A2x</h2>
 
-				<AnimatedTitle title="Disc<b>o</b>ver the World&apos;s <br /> l<b>a</b>rgest Shared Adventure" containerClass="mt-5 !text-black text-center" />
+				<AnimatedTitle 
+  title="Disc<b>o</b>ver Compassionate <br /> C<b>a</b>re for Every Life Stage" 
+  containerClass="mt-5 !text-black text-center" 
+/>
+
 
 				<div className="about-subtext">
-					<p>
-						The Game of Games begins-your life, now an epic MMORPG
-					</p>
-					<p>
-						Shoutout to Zentry for the Design
-					</p>
-				</div>
+  <p>
+    Your health journey starts here — expert care, personalized for you.
+  </p>
+  <p>
+    Dedicated to wellness and compassionate support every step of the way.
+  </p>
+</div>
+
 			</div>
 
 			<div className="h-dvh w-screen" id="clip">

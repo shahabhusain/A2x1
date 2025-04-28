@@ -5,53 +5,53 @@ import RoundedCorners from "../RoundedCorners";
 import Button from "../Button";
 
 const Story = () => {
-	const frameRef = useRef(null);
+  const frameRef = useRef(null);
 
-	const handleMouseLeave = () => {
-		const element = frameRef.current;
+  const handleMouseLeave = () => {
+    const element = frameRef.current;
 
-		gsap.to(element, {
-			duration: 0.3,
-			rotateX: 0,
-			rotateY: 0,
-			ease: 'power1.inOut'
-		});
-	}
+    gsap.to(element, {
+      duration: 0.3,
+      rotateX: 0,
+      rotateY: 0,
+      ease: "power1.inOut",
+    });
+  };
 
-	const handleMouseMove = (e) => {
-		const { clientX, clientY } = e;
-		const element = frameRef.current;
+  const handleMouseMove = (e) => {
+    const { clientX, clientY } = e;
+    const element = frameRef.current;
 
-		if (!element) return;
+    if (!element) return;
 
-		const rect = element.getBoundingClientRect();
-		const x = clientX - rect.left;
-		const y = clientY - rect.top;
-		const centerX = rect.width / 2;
-		const centerY = rect.height / 2;
+    const rect = element.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
 
-		//relative rotation of X & Y relative to center
-		const rotateX = ((y - centerY) / centerY) * -10;
-		const rotateY = ((x - centerX) / centerX) * 10;
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
 
-		gsap.to(element, {
-			duration: 0.3,
-			rotateX, rotateY,
-			transformPerspective: 500,
-			ease: 'power1.inOut'
-		});
-	}
+    gsap.to(element, {
+      duration: 0.3,
+      rotateX,
+      rotateY,
+      transformPerspective: 500,
+      ease: "power1.inOut",
+    });
+  };
 
-	return (
-		<div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
+  return (
+    <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
       <div className="flex size-full flex-col items-center py-10 pb-24">
         <p className="font-general text-sm uppercase md:text-[10px]">
-          the multiversal ip world
+          advancing healthcare innovation
         </p>
 
         <div className="relative size-full">
           <AnimatedTitle
-            title="the st<b>o</b>ry of <br /> <b>a</b> hidd<b>e</b>n real<b>m</b>"
+            title="the j<b>o</b>urney to <br /> <b>b</b>etter h<b>e</b>althc<b>a</b>re"
             containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
           />
 
@@ -65,7 +65,7 @@ const Story = () => {
                   onMouseUp={handleMouseLeave}
                   onMouseEnter={handleMouseLeave}
                   src="/img/intro.png"
-                  alt="entrance.webp"
+                  alt="healthcare-intro.webp"
                   className="object-contain"
                 />
               </div>
@@ -79,14 +79,12 @@ const Story = () => {
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
             <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
-              Where realms converge, lies Zentry and the boundless pillar.
-              Discover its secrets and shape your fate amidst infinite
-              opportunities.
+              Step into a future where personalized care, advanced technologies, and compassionate services come together to transform lives.
             </p>
 
             <Button
               id="realm-btn"
-              title="discover prologue"
+              title="explore our vision"
               containerClass="mt-5"
             />
           </div>
@@ -96,4 +94,4 @@ const Story = () => {
   );
 };
 
-export default Story
+export default Story;

@@ -36,12 +36,14 @@ const Contact = () => {
 				</div>
 
 				<div className="flex flex-col items-center text-center">
-					<p className="font-general text-[10px] uppercase">
-						Join Enigma
-					</p>
-					<p className="special-font mt-10 w-full font-zentry text-5xl leading-[0.9] md:text-[6rem]">
-						L<b>e</b>t&apos;s b<b>u</b>ild the <br /> new <b>e</b>ra of <br /> G<b>a</b>mi<b>n</b>g tog<b>e</b>ther!
-					</p>
+  <p className="font-general text-[10px] uppercase">
+    Join the Future of Care
+  </p>
+  <p className="special-font mt-10 w-full font-zentry text-5xl leading-[0.9] md:text-[6rem]">
+    L<b>e</b>t&apos;s r<b>e</b>shape the <br /> future of <b>h</b>ealth<b>c</b>are <br /> tog<b>e</b>ther!
+  </p>
+
+
 
 					<Button
 						title="contact us"
