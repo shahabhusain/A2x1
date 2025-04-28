@@ -24,7 +24,7 @@ function About() {
   }, []);
 
   return (
-    <>
+    <div className="html">
       <GlobalStyles />
       <ThemeProvider theme={dark}>
         <LocomotiveScrollProvider
@@ -56,7 +56,7 @@ function About() {
           </main>
         </LocomotiveScrollProvider>
       </ThemeProvider>
-    </>
+    </div>
   );
 }
 
