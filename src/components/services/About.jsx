@@ -9,7 +9,7 @@ const About = () => {
   return (
     <section className="about wrapper" ref={AboutRef}>
       <h2 className=" text-[56px] font-[700] mb-12" ref={sectionTitleRef}>
-        About
+        What we Provide
       </h2>
       <p>
         At HealthPlus, we are dedicated to providing exceptional medical care with compassion and excellence. Our mission is to promote healthier communities through advanced healthcare services and patient-centered care.

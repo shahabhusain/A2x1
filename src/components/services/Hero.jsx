@@ -29,7 +29,7 @@ const Hero = () => {
         A2Z <span ref={shutter1}></span>
       </h1>
       <h1 className="canvas text-[#2E3D32]">
-        HeathCare <span ref={shutter2}></span>
+        SERVICES <span ref={shutter2}></span>
       </h1>
       <div className="photos">
         <div

@@ -22,6 +22,11 @@ const navItems = [
 		name: 'Blog',
 		link: '/blog'
 	},
+
+	{
+		name: 'Carrier',
+		link: '/carrer'
+	},
 	{
 		name: 'Contact',
 		link: '/contact'
@@ -88,7 +93,7 @@ const Navbar = () => {
 							{navItems.map((item) => (
 								<Link 
 									key={item.name}
-									className="nav-hover-btn textb"
+									className="nav-hover-btn "
 									to={item.link}
 								>
 									{item.name}

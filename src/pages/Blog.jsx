@@ -56,8 +56,40 @@ export default function Blog() {
       description: 'Recognizing the key indicators that professional home care may be the right solution for your family.',
       image: 'https://img.freepik.com/free-photo/senior-woman-receiving-home-care_23-2148913570.jpg?w=740&t=st=1714315731~exp=1714316331~hmac=0499b3e388f0fda7f16296c5702a91457be55b7889df748ffb299346c13c6220',
       category: 'Dementia Support'
-    }
+    },
+
+
+     {
+      title: 'Right Home Care Provider',
+      description: 'Key factors to consider when selecting a trusted in-home care provider who will be there for your loved ones.',
+      image: 'https://img.freepik.com/free-photo/medical-worker-taking-care-patient_23-2149190959.jpg?w=740&t=st=1714315686~exp=1714316286~hmac=99c67e91ec166fda78a6a0eac5c597dedb983967c7c6fd54e57f6d6a5197ef34',
+      category: 'Post-Surgical Recovery'
+    },
+    {
+      title: 'Your Loved One Need',
+      description: 'Recognizing the key indicators that professional home care may be the right solution for your family.',
+      image: 'https://img.freepik.com/free-photo/senior-woman-receiving-home-care_23-2148913570.jpg?w=740&t=st=1714315731~exp=1714316331~hmac=0499b3e388f0fda7f16296c5702a91457be55b7889df748ffb299346c13c6220',
+      category: 'Dementia Support'
+    },
+
+ {
+      title: 'Right Home Care Provider',
+      description: 'Key factors to consider when selecting a trusted in-home care provider who will be there for your loved ones.',
+      image: 'https://img.freepik.com/free-photo/nurse-talking-with-patient-hospital-room_23-2149162501.jpg?w=740&t=st=1714315480~exp=1714316080~hmac=d8a4bdb53fa2fd8e54bba6fd5db3aa2d4ccff5b5c8b9e1c2b8c6d9ebaf5025a2',
+      category: 'Patient Care'
+    },
+    {
+      title: 'Your Loved One Need',
+      description: 'Recognizing the key indicators that professional home care may be the right solution for your family.',
+      image: 'https://img.freepik.com/free-photo/elderly-woman-home-with-nurse_23-2148913575.jpg?w=740&t=st=1714315529~exp=1714316129~hmac=71d355e9a54c5fbf9f4e6321b6fbebd3130e3b63d5c9a0db6de2c4071b4ed107',
+      category: 'Dementia Support'
+    },
+
+
+    
   ];
+
+  
 
   const filteredBlogs = activeFilter === 'All' 
     ? blogPosts 
@@ -297,119 +329,6 @@ export default function Blog() {
           </motion.div>
         </div>
       </div>
-
-      {/* CTA Section with Animation */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className='bg3 mt-20'
-      >
-        <div className='flex flex-col gap-3 items-center justify-center pt-72'>
-          <motion.h1 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            viewport={{ once: true }}
-            className='text-[48px] font-[600] text-white max-w-[766px] text-center'
-          >
-            Experience Care Like Never Before <span className='text-[#DCFFAA]'>- Schedule Now!</span>
-          </motion.h1>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className='py-3 px-5 rounded-full bg-[#DCFFAA] text-[#2E3D32]'
-          >
-            Book Consultation!
-          </motion.button>
-        </div>
-      </motion.div>
-
-      {/* Contact Form with Animation */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="w-[90%] mx-auto p-6 rounded-lg flex justify-between mt-20"
-      >
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-8 w-1/2"
-        >
-          <h2 className="text-[36px] font-bold text-gray-800">We're Here to Help - </h2>
-          <h3 className="text-2xl font-bold text-gray-800">Reach Out!</h3>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          viewport={{ once: true }}
-          className="space-y-6 w-1/2"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your name"
-                className="w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                required
-              />
-            </motion.div>
-            
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="example@email.com"
-                className="w-full px-3 py-2 border bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                required
-              />
-            </motion.div>
-          </div>
-          
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Write your message..."
-              rows="5"
-              className="w-full px-3 border bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            ></textarea>
-          </motion.div>
-          
-          <div className="flex justify-start">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-green-800 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
-            >
-              Submit message
-            </motion.button>
-          </div>
-        </motion.div>
-      </motion.div>
     </div>
   );
 }
