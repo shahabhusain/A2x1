@@ -40,7 +40,7 @@ const BentoTilt = ({ children, className = '' }) => {
 
 const Features = () => {
   return (
-    <section id="features" className="bg-black pb-52">
+    <section id="features" className="bg-[#2E3D32] pb-52">
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
           <p className="font-circular-web text-lg text-blue-50">
@@ -85,8 +85,8 @@ const Features = () => {
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_2">
-            <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-              <h1 className="bento-title special-font max-w-64 text-black">
+            <div className="flex size-full flex-col justify-between bg-[#659672] p-5">
+              <h1 className="bento-title special-font max-w-64 text-white">
                 New Se<b>r</b>vices La<b>u</b>nching Soon
               </h1>
               <TiLocationArrow className="m-5 scale-[5] self-end cursor-pointer" />

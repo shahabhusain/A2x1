@@ -29,6 +29,7 @@ const Left = styled.div`
   font-size: ${(props) => props.theme.fontlg};
   font-weight: 300;
   position: relative;
+    color:#2E3D32;
   z-index: 5;
   margin-top: 20%;
 
@@ -112,6 +113,7 @@ const Title = styled.h1`
   font-size: ${(props) => props.theme.fontBig};
   font-family: "Kaushan Script";
   font-weight: 300;
+  color:#2E3D32;
   /* text-transform: capitalize; */
 
   position: absolute;

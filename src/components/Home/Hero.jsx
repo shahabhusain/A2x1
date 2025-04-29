@@ -30,7 +30,7 @@ const Hero = () => {
 		});
 	};
 
-	const getVideoSrc = (index) => `videos/hero-${index}.png`;
+	const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
 	const handleVideoLoad = () => {
 		setLoadedVideos((prev) => prev + 1);
@@ -102,40 +102,45 @@ const Hero = () => {
 				<div>
 					<div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
 						<div onClick={handleMiniVdClick} className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100">
-							<img
+							<video
 								ref={nextVideoRef}
 								src={getVideoSrc(upComingVideoIndex)}
+								loop
+								muted
 								id="current-video"
 								className="size-64 origin-center scale-150 object-cover objectt-center"
 							/>
 						</div>
 					</div>
 
-					<img
+					<video
+					    loop
+						muted
 						ref={nextVideoRef}
 						src={getVideoSrc(currentIndex)}
 						id="next-video"
 						className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
 					/>
 
-					<img
+					<video
+					  loop 
+					  muted
 						src={getVideoSrc(currentIndex === totalVideos - 1 ? 1 : currentIndex)}
-						muted
 						className="absolute left-0 top-0 size-full object-cover object-center"
 						onLoadedData={handleVideoLoad}
 					/>
 				</div>
 
-				<h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-[#d6d4d4]">
+				<h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-[#fff]">
 				A2Z<b>Health</b>
 				</h1>
 
 				<div className="absolute left-0 top-0 z-40 size-full">
 					<div className="mt-24 px-5 sm:px-10">
-						<h1 className="special-font hero-heading text-[#d6d4d4]">A2Z<b>Health</b>Care</h1>
-						<p className="mb-5 max-w-64 font-robert-regular text-blue-100">A2Z Health: Your Wellness, <br /> Our Digital Care</p>
+						<h1 className="special-font hero-heading text-[#fff]">A2Z<b>Health</b>Care</h1>
+						<p className="mb-5  font-robert-regular text-[#fff]">A2Z Health: Your Wellness, <br /> Our Digital Care</p>
 
-						<Button id="watch-trailer" title="Get Started" leftIcon={<TiLocationArrow />} containerClass="!bg-yellow-300 flex-center gap-1" />
+						<Button id="watch-trailer" title="Get Started" leftIcon={<TiLocationArrow />} containerClass="!bg-[#fff] flex-center gap-1" />
 					</div>
 				</div>
 			</div>

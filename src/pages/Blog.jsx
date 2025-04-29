@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Blog() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -57,9 +58,6 @@ export default function Blog() {
       category: 'Dementia Support'
     }
   ];
-  
-  
-  
 
   const filteredBlogs = activeFilter === 'All' 
     ? blogPosts 
@@ -82,196 +80,336 @@ export default function Blog() {
     setCurrentPage(1);
   }, [activeFilter]);
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const filterItem = {
+    hidden: { scale: 0.8, opacity: 0 },
+    show: { scale: 1, opacity: 1, transition: { duration: 0.3 } }
+  };
+
+  const pageItem = {
+    hidden: { scale: 0.9, opacity: 0 },
+    show: { scale: 1, opacity: 1, transition: { duration: 0.2 } }
+  };
+
   return (
-       <div>
-         <div className="min-h-screen bg-slate-50">
-      <div className="bg-[#2E3D32] py-10 px-6 text-center text-white">
-        <h1 className="text-[137px] font-bold mb-6">Our blogs</h1>
-        <div className="flex flex-wrap justify-center gap-2">
-          {filters.map(filter => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-5 py-3 rounded-full text-sm transition-all duration-300 ${
-                activeFilter === filter 
-                ? 'bg-white text-green-800 font-medium' 
-                : 'bg-green-700 text-white hover:bg-green-600'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="w-[90%] mx-auto py-12 px-4">
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 opacity-40 transition-opacity duration-300">
-            {Array(8).fill(0).map((_, i) => (
-              <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="h-48 bg-gray-200"></div>
-                <div className="p-4">
-                  <div className="h-6 bg-gray-200 rounded mb-2"></div>
-                  <div className="h-16 bg-gray-100 rounded"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-opacity duration-500 opacity-100">
-            {currentPosts.map((post, index) => (
-              <div 
-                key={index}
-                className="bg-[#00000013] p-6 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="font-semibold text-[20px] text-[#2E3D32] mb-2">{post.title}</h3>
-                  <p className="text-[#2E3D32] text-[16px] font-[400]">{post.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Pagination */}
-        <div className="flex justify-center items-center mt-12 gap-2">
-          <button 
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className={`flex items-center justify-center w-8 h-8 rounded-full ${
-              currentPage === 1 
-              ? 'text-gray-400 cursor-not-allowed' 
-              : 'text-green-800 hover:bg-green-100'
-            }`}
+    <div>
+      <div className="min-h-screen bg-slate-50">
+        {/* Hero Section with Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-[#2E3D32] py-10 px-6 text-center text-white"
+        >
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-[137px] font-bold mb-6"
           >
-            <ChevronLeft size={18} />
-          </button>
+            Our blogs
+          </motion.h1>
           
-          {Array.from({ length: totalPages }, (_, i) => i + 1)
-            .filter(page => {
-              // Show first page, last page, current page, and pages around current page
-              return page === 1 || 
-                     page === totalPages || 
-                     (page >= currentPage - 1 && page <= currentPage + 1);
-            })
-            .map((page, index, array) => {
-              // Add ellipsis
-              if (index > 0 && page > array[index - 1] + 1) {
-                return [
-                  <span key={`ellipsis-${page}`} className="px-2">...</span>,
-                  <button
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="flex flex-wrap justify-center gap-2"
+          >
+            {filters.map(filter => (
+              <motion.button
+                key={filter}
+                variants={filterItem}
+                onClick={() => setActiveFilter(filter)}
+                className={`px-5 py-3 rounded-full text-sm transition-all duration-300 ${
+                  activeFilter === filter 
+                  ? 'bg-white text-green-800 font-medium' 
+                  : 'bg-green-700 text-white hover:bg-green-600'
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {filter}
+              </motion.button>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        <div className="w-[90%] mx-auto py-12 px-4">
+          {isLoading ? (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.4 }}
+              exit={{ opacity: 0 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-opacity duration-300"
+            >
+              {Array(8).fill(0).map((_, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: i * 0.05 }}
+                  className="bg-white rounded-lg shadow-md overflow-hidden"
+                >
+                  <div className="h-48 bg-gray-200 animate-pulse"></div>
+                  <div className="p-4">
+                    <div className="h-6 bg-gray-200 rounded mb-2 animate-pulse"></div>
+                    <div className="h-16 bg-gray-100 rounded animate-pulse"></div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          ) : (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${activeFilter}-${currentPage}`}
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+              >
+                {currentPosts.map((post, index) => (
+                  <motion.div 
+                    key={index}
+                    variants={item}
+                    className="bg-[#00000013] p-6 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                  >
+                    <motion.img 
+                      src={post.image} 
+                      alt={post.title} 
+                      className="w-full h-48 object-cover"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                    />
+                    <div className="p-4">
+                      <h3 className="font-semibold text-[20px] text-[#2E3D32] mb-2">{post.title}</h3>
+                      <p className="text-[#2E3D32] text-[16px] font-[400]">{post.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          )}
+
+          {/* Pagination with Animation */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="flex justify-center items-center mt-12 gap-2"
+          >
+            <motion.button 
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                currentPage === 1 
+                ? 'text-gray-400 cursor-not-allowed' 
+                : 'text-green-800 hover:bg-green-100'
+              }`}
+              whileHover={{ scale: currentPage === 1 ? 1 : 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronLeft size={18} />
+            </motion.button>
+            
+            {Array.from({ length: totalPages }, (_, i) => i + 1)
+              .filter(page => {
+                return page === 1 || 
+                       page === totalPages || 
+                       (page >= currentPage - 1 && page <= currentPage + 1);
+              })
+              .map((page, index, array) => {
+                if (index > 0 && page > array[index - 1] + 1) {
+                  return [
+                    <motion.span 
+                      key={`ellipsis-${page}`} 
+                      className="px-2"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      ...
+                    </motion.span>,
+                    <motion.button
+                      key={page}
+                      variants={pageItem}
+                      onClick={() => handlePageChange(page)}
+                      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        currentPage === page
+                          ? 'bg-green-800 text-white font-medium'
+                          : 'hover:bg-green-100 text-green-800'
+                      }`}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      {page}
+                    </motion.button>
+                  ];
+                }
+                
+                return (
+                  <motion.button
                     key={page}
+                    variants={pageItem}
                     onClick={() => handlePageChange(page)}
                     className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                       currentPage === page
                         ? 'bg-green-800 text-white font-medium'
                         : 'hover:bg-green-100 text-green-800'
                     }`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                   >
                     {page}
-                  </button>
-                ];
-              }
-              
-              return (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                    currentPage === page
-                      ? 'bg-green-800 text-white font-medium'
-                      : 'hover:bg-green-100 text-green-800'
-                  }`}
-                >
-                  {page}
-                </button>
-              );
-            })}
-          
-          <button 
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={`flex items-center justify-center w-8 h-8 rounded-full ${
-              currentPage === totalPages 
-              ? 'text-gray-400 cursor-not-allowed' 
-              : 'text-green-800 hover:bg-green-100'
-            }`}
-          >
-            <ChevronRight size={18} />
-          </button>
+                  </motion.button>
+                );
+              })}
+            
+            <motion.button 
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`flex items-center justify-center w-8 h-8 rounded-full ${
+                currentPage === totalPages 
+                ? 'text-gray-400 cursor-not-allowed' 
+                : 'text-green-800 hover:bg-green-100'
+              }`}
+              whileHover={{ scale: currentPage === totalPages ? 1 : 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <ChevronRight size={18} />
+            </motion.button>
+          </motion.div>
         </div>
       </div>
 
-   
-    </div>
+      {/* CTA Section with Animation */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className='bg3 mt-20'
+      >
+        <div className='flex flex-col gap-3 items-center justify-center pt-72'>
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+            className='text-[48px] font-[600] text-white max-w-[766px] text-center'
+          >
+            Experience Care Like Never Before <span className='text-[#DCFFAA]'>- Schedule Now!</span>
+          </motion.h1>
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className='py-3 px-5 rounded-full bg-[#DCFFAA] text-[#2E3D32]'
+          >
+            Book Consultation!
+          </motion.button>
+        </div>
+      </motion.div>
 
-    <div className=' bg3 mt-20 '>
-       <div className=' flex flex-col gap-3 items-center justify-center pt-72'>
-       <h1 className=' text-[48px] font-[600] text-white max-w-[766px] text-center'>Experience Care Like Never Before <span className=' text-[#DCFFAA]'>- Schedule Now!</span></h1>
-       <button className=' py-3 px-5 rounded-full bg-[#DCFFAA] text-[#2E3D32]'>Book Consultation!</button>
-       </div>
-    </div>
-
-
-    <div className=" w-[90%] mx-auto p-6 rounded-lg flex justify-between mt-20">
-      <div className="mb-8 w-1/2">
-        <h2 className="text-[36px] font-bold text-gray-800">We're Here to Help - </h2>
-        <h3 className="text-2xl font-bold text-gray-800">Reach Out!</h3>
-      </div>
-      
-      <div  className="space-y-6 w-1/2">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your name"
-              className="w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
+      {/* Contact Form with Animation */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="w-[90%] mx-auto p-6 rounded-lg flex justify-between mt-20"
+      >
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-8 w-1/2"
+        >
+          <h2 className="text-[36px] font-bold text-gray-800">We're Here to Help - </h2>
+          <h3 className="text-2xl font-bold text-gray-800">Reach Out!</h3>
+        </motion.div>
+        
+        <motion.div 
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          viewport={{ once: true }}
+          className="space-y-6 w-1/2"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                className="w-full px-3 py-2 bg-transparent border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </motion.div>
+            
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="example@email.com"
+                className="w-full px-3 py-2 border bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                required
+              />
+            </motion.div>
           </div>
           
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="example@email.com"
-              className="w-full px-3 py-2 border  bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
-        </div>
-        
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Write your message..."
-            rows="5"
-            className="w-full px-3  border  bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            required
-          ></textarea>
-        </div>
-        
-        <div className="flex justify-start">
-          <button
-            className="px-6 py-2 bg-green-800 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
           >
-            Submit message
-          </button>
-        </div>
-      </div>
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Write your message..."
+              rows="5"
+              className="w-full px-3 border bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            ></textarea>
+          </motion.div>
+          
+          <div className="flex justify-start">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-2 bg-green-800 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              Submit message
+            </motion.button>
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
-       </div>
   );
 }

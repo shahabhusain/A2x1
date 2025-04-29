@@ -25,10 +25,10 @@ const Hero = () => {
   useGsapPhotoLavitate(photosArr, heroRef);
   return (
     <section className="hero wrapper mt-32" ref={heroRef}>
-      <h1 className="ethereal">
-        A2x <span ref={shutter1}></span>
+      <h1 className="ethereal text-[#2E3D32]">
+        A2Z <span ref={shutter1}></span>
       </h1>
-      <h1 className="canvas">
+      <h1 className="canvas text-[#2E3D32]">
         HeathCare <span ref={shutter2}></span>
       </h1>
       <div className="photos">

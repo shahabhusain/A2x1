@@ -35,10 +35,10 @@ const Gallery = () => {
   useGsapTitleUnveil(sectionTitleRef, galleryRef);
   return (
     <section className="gallery " ref={galleryRef}>
-      <h2 className="section-title " ref={sectionTitleRef}>
+      <h2 className=" text-[55px] font-[700] mb-12 " ref={sectionTitleRef}>
         Gallery
       </h2>
-      <div className="gallery-wrapper">
+      <div className="gallery-wrapper bg-white">
         {images.map((image) => (
           <GalleryItem key={image.id} image={image} />
         ))}

@@ -32,7 +32,7 @@ const About = () => {
 
 				<AnimatedTitle 
   title="Disc<b>o</b>ver Compassionate <br /> C<b>a</b>re for Every Life Stage" 
-  containerClass="mt-5 !text-black text-center" 
+  containerClass="mt-5 !text-black text-center text-[#2E3D32]" 
 />
 
 

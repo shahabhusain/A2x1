@@ -6,11 +6,9 @@ import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import { ThemeProvider } from "styled-components";
 import ScrollTriggerProxy from "../components/ScrollTriggerProxy";
 import Marquee from "../components/sections/Marquee";
-import NewArrival from "../components/sections/NewArrival";
-import Shop from "../components/sections/Shop";
-import GlobalStyles from "../styles/GlobalStyles";
 import { dark } from "../styles/Themes";
 import Aboutss from "../components/sections/Aboutss";
+
 
 function About() {
   // useLocoScroll();
@@ -24,8 +22,8 @@ function About() {
   }, []);
 
   return (
-    <div className="html">
-      <GlobalStyles />
+      <div>
+         <div className="html">
       <ThemeProvider theme={dark}>
         <LocomotiveScrollProvider
           options={{
@@ -38,13 +36,6 @@ function About() {
               smooth: true,
             },
           }}
-          watch={
-            [
-              //..all the dependencies you want to watch to update the scroll.
-              //  Basicaly, you would want to watch page/location changes
-              //  For exemple, on Next.js you would want to watch properties like `router.asPath` (you may want to add more criterias if the instance should be update on locations with query parameters)
-            ]
-          }
           containerRef={containerRef}
         >
           <main className="App" data-scroll-container ref={containerRef}>
@@ -57,6 +48,7 @@ function About() {
         </LocomotiveScrollProvider>
       </ThemeProvider>
     </div>
+      </div>
   );
 }
 

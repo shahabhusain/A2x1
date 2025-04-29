@@ -8,7 +8,7 @@ const About = () => {
 
   return (
     <section className="about wrapper" ref={AboutRef}>
-      <h2 className="section-title" ref={sectionTitleRef}>
+      <h2 className=" text-[56px] font-[700] mb-12" ref={sectionTitleRef}>
         About
       </h2>
       <p>
