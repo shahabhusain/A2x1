@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import main from '../../assets/about1.png';
+import main from '../../assets/image3.png';
 
 const OurVision = () => {
   return (
@@ -22,7 +22,7 @@ const OurVision = () => {
         <p className="text-[20px] font-[400] text-[#2E3D32]">
           To be the most trusted home health care provider, delivering compassionate and high-quality care. We strive to enhance the well-being of every client with dignity, respect, and personalized support. Our goal is to empower individuals to live independently in the comfort of their homes.
         </p>
-        <button className="text-xl py-3 px-6 rounded-full bg-white text-black w-fit">
+        <button className="text-[16px] font-[600] py-3 px-6 rounded-full bg-white text-black w-fit mt-6">
           View all Services
         </button>
       </motion.div>

@@ -1,11 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const ContactForm = () => {
-  const formRef = useRef();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
+import { useState } from 'react';
+import { Mail } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import map from '../assets/map.png'
+export default function ContactForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,112 +18,165 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setTimeout(() => setFormData({ name: '', email: '', message: '' }), 1000);
-      setTimeout(() => setSubmitStatus(null), 3000);
-    }, 1500);
+    console.log('Form submitted:', formData);
+    // Here you would typically send the data to your backend
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-blue-100 flex items-center justify-center p-4">
-      <motion.div 
-        className="form-container rounded-2xl shadow-xl overflow-hidden w-[60%] mx-auto mt-20 relative"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="p-8">
-          <AnimatePresence>
-            {submitStatus === 'success' ? (
-              <motion.div
-                className="text-center py-8"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Message Sent!</h2>
-                <p className="text-gray-600">We'll get back to you soon.</p>
-              </motion.div>
-            ) : (
-              <motion.form
-                ref={formRef}
-                onSubmit={handleSubmit}
-                className="space-y-6"
-                initial="hidden"
-                animate="visible"
-                variants={{
-                  visible: { transition: { staggerChildren: 0.15 } },
-                  hidden: {}
-                }}
-              >
-                {['name', 'email', 'message'].map((field, index) => (
-                  <motion.div
-                    key={field}
-                    className="form-field"
-                    variants={{
-                      hidden: { opacity: 0, y: 20 },
-                      visible: { opacity: 1, y: 0 }
-                    }}
-                  >
-                    <label htmlFor={field} className="block text-sm font-medium text-gray-700 mb-1 capitalize">{field}</label>
-                    {field === 'message' ? (
-                      <textarea
-                        id={field}
-                        name={field}
-                        rows="4"
-                        value={formData[field]}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                      />
-                    ) : (
-                      <input
-                        type={field === 'email' ? 'email' : 'text'}
-                        id={field}
-                        name={field}
-                        value={formData[field]}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-                      />
-                    )}
-                  </motion.div>
-                ))}
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className=" w-full bg-green-600 hover:bg-green-700 text-black font-medium py-3 px-4 rounded-lg transition-all"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center justify-center">
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                      </svg>
-                      Sending...
-                    </span>
-                  ) : 'Send Message'}
-                </motion.button>
-              </motion.form>
-            )}
-          </AnimatePresence>
+         <div>
+           <div className="min-h-screen bg-[#2E3D32] flex items-center justify-center p-4">
+      <div className=" w-[90%] flex flex-col md:flex-row mt-32">
+        {/* Left Column - Contact Information */}
+        <div className="text-white md:w-1/2">
+          <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
+          <p className="mb-8 className='max-w-[566px]'">
+            Email, call, or complete the form to get best home health
+            care journey with us
+          </p>
+          
+          <div className="mb-8">
+            <p className="mb-2">info@a2zhomehealthcare.com</p>
+            <p>321-221-231</p>
+          </div>
+          
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-4 ">Customer Support</h2>
+            <p className='max-w-[566px]'>
+              Our support team is available around the clock to address any
+              concerns or queries you may have.
+            </p>
+          </div>
+          
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Feedback and Suggestions</h2>
+            <p className='max-w-[566px]'>
+              We value your feedback and are continuously working to improve
+              A2Z Home Health Care.
+            </p>
+          </div>
         </div>
-
-      </motion.div>
+        
+        {/* Right Column - Contact Form */}
+        <div className="bg-white rounded-2xl p-8 md:w-1/2 shadow-lg">
+          <h2 className="text-2xl font-bold mb-2 text-gray-800">Get in Touch</h2>
+          <p className="text-gray-600 mb-6">You can reach us anytime</p>
+          
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col md:flex-row gap-4 mb-4">
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First name"
+                className="bg-[#FAFFF4] p-3 rounded-md flex-1"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last name"
+                className="bg-[#FAFFF4] p-3 rounded-md flex-1"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="mb-4 relative">
+              <div className="absolute left-3 top-3 text-gray-500">
+                <Mail size={20} />
+              </div>
+              <input
+                type="email"
+                name="email"
+                placeholder="Your email"
+                className="bg-[#FAFFF4] p-3 pl-10 rounded-md w-full"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="mb-4 flex">
+              <div className="bg-[#FAFFF4] p-3 rounded-l-md border-r border-gray-200">
+                <span className="text-gray-500">+01</span>
+              </div>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone number"
+                className="bg-[#FAFFF4] p-3 rounded-r-md flex-1"
+                value={formData.phone}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <div className="mb-6">
+              <textarea
+                name="message"
+                placeholder="How can we help?"
+                rows="4"
+                className="bg-[#FAFFF4] p-3 rounded-md w-full resize-none"
+                value={formData.message}
+                onChange={handleChange}
+              />
+            </div>
+            
+            <button
+              type="submit"
+              className="w-full bg-[#DCFFAA] hover:bg-green-300 text-green-800 font-medium py-3 px-4 rounded-md transition duration-200"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-  );
-};
 
-export default ContactForm;
+    <div className="bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto p-4">
+        <div className="flex flex-col md:flex-row gap-6 py-8">
+          {/* Left Column - Map */}
+         <img className='md:w-1/2' src={map} alt="" />
+          
+          {/* Right Column - Location Info */}
+          <div className="md:w-1/2">
+            <div className="mb-6">
+              <div className="inline-block bg-[#DCFFAA] text-green-800 px-5 py-3 rounded-full text-sm font-medium mb-2">
+                Our Location
+              </div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Connecting Near and Far</h2>
+              
+              <div className="mb-6">
+                <h3 className="font-semibold mb-2">Headquarters</h3>
+                <p className="text-gray-700 mb-1">A2Z Home Health Care</p>
+                <p className="text-gray-700 mb-1">9567 Old Lou Hwy Unit #21-C</p>
+                <p className="text-gray-700 mb-1">Fort Kir, WI 22930-4931</p>
+                <p className="text-gray-700">United States</p>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="bg-gray-50 rounded-lg p-4 flex items-start space-x-3">
+                  <MapPin size={20} className="text-green-600 mt-1" />
+                  <div>
+                    <h4 className="font-medium text-gray-800">Visit our office</h4>
+                    <p className="text-gray-600 text-sm">We're open Monday through Friday, 9am-5pm</p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-4 flex items-start space-x-3">
+                  <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 mt-1">
+                    <span className="text-xs font-bold">?</span>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-800">Need directions?</h4>
+                    <p className="text-gray-600 text-sm">Call us at 555-123-4567 for assistance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+         </div>
+  );
+}

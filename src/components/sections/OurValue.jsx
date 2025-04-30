@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import main from '../../assets/image3.png';
+import main from '../../assets/about1.png';
 
 const OurValue = () => {
   return (
@@ -12,7 +12,7 @@ const OurValue = () => {
       viewport={{ once: true }}
     >
       <motion.div
-        className="flex flex-col gap-4 bg-[#DCFFAB] p-12 rounded-l-2xl w-1/2"
+        className="flex flex-col gap-4 bg-[#FDFDBA] p-12 rounded-l-2xl w-1/2"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
@@ -22,7 +22,7 @@ const OurValue = () => {
         <p className="text-[20px] font-[400] text-[#2E3D32]">
           To be the most trusted home health care provider, delivering compassionate and high-quality care. We strive to enhance the well-being of every client with dignity, respect, and personalized support. Our goal is to empower individuals to live independently in the comfort of their homes.
         </p>
-        <button className="py-3 px-6 text-xl rounded-full bg-white text-black w-fit">
+        <button className="py-3 px-6 text-[16px] font-[600] mt-6 rounded-full bg-white text-black w-fit">
           View all Services
         </button>
       </motion.div>

@@ -1,121 +1,97 @@
-import { useEffect, useRef, useState } from "react";
-import Button from "../components/Button";
-import { TiLocationArrow } from "react-icons/ti";
-import { useWindowScroll } from "react-use";
-import gsap from "gsap";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-const navItems = [
-	{
-		name: 'Home',
-		link: '/'
-	},
-	{
-		name: 'About',
-		link: '/about'
-	},
-	{
-		name: 'Services',
-		link: '/services'
-	},
-	{
-		name: 'Blog',
-		link: '/blog'
-	},
-
-	{
-		name: 'Carrier',
-		link: '/carrer'
-	},
-	{
-		name: 'Contact',
-		link: '/contact'
-	}
-];
-
-const Navbar = () => {
-	const navContainerRef = useRef(null);
-	const audioElementRef = useRef(null);
-	const [isAudioPlaying, setIsAudioPlaying] = useState(true);
-	const [isIndicatorActive, setIsIndicatorActive] = useState(true);
-	const [isNavVisible, setIsNavVisible] = useState(true);
-
-	const [lastScrollY, setLastScrollY] = useState(0);
-	const { y: currentScrollY } = useWindowScroll();
-
-	useEffect(() => {
-		if (currentScrollY === 0) { // initial state with no black-bg for nav
-			setIsNavVisible(true);
-			navContainerRef.current.classList.remove('floating-nav');
-		} else if (currentScrollY > lastScrollY) { // scrolling back up, display the nav with black-bg
-			setIsNavVisible(false);
-			navContainerRef.current.classList.add('floating-nav');
-		} else if (currentScrollY < lastScrollY) {
-			setIsNavVisible(true);
-			navContainerRef.current.classList.add('floating-nav');
-		}
-
-		setLastScrollY(currentScrollY);
-	}, [currentScrollY, lastScrollY]);
-
-	useEffect(() => {
-		gsap.to(navContainerRef.current, {
-			y: isNavVisible ? 0 : -100,
-			opacity: isNavVisible ? 1 : 0,
-			duration: 0.2
-		});
-	}, [isNavVisible])
-
-	const toggleAudioIndicator = () => {
-		setIsAudioPlaying((prev) => !prev);
-		setIsIndicatorActive((prev) => !prev);
-	}
-
-	useEffect(() => {
-		if (isAudioPlaying) {
-			audioElementRef.current.play();
-		} else {
-			audioElementRef.current.pause();
-		}
-	}, [isAudioPlaying]);
-
-	return (
-		<div ref={navContainerRef} className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6">
-			<header className="absolute top-1/2 w-full -translate-y-1/2">
-				<nav className="flex size-full items-center justify-between p-4">
-					<div className="flex items-center gap-7">
-						<img src="/img/logo.png" alt="logo" />
-
-					</div>
-
-					<div className="flex h-full items-center">
-						<div className="hidden md:block">
-							{navItems.map((item) => (
-								<Link 
-									key={item.name}
-									className="nav-hover-btn "
-									to={item.link}
-								>
-									{item.name}
-								</Link>
-							))}
-						</div>
-
-						<button className="ml-10 flex items-center space-x-0.5" onClick={toggleAudioIndicator}>
-							<audio ref={audioElementRef} className="hidden" src="/audio/loop.mp3" loop />
-							{[1, 2, 3, 4].map((bar) => (
-								<div
-									key={bar}
-									className={`indicator-line ${isIndicatorActive ? '' : ' text-black'}`}
-									style={{ animationDelay: `${bar * 0.2}s` }}
-								/>
-							))}
-						</button>
-					</div>
-				</nav>
-			</header>
-		</div>
-	)
+export default function Navbar() {
+  // In a real app with React Router, we would use useLocation() to get the current path
+  const location = useLocation();
+  
+  return (
+    <div className='flex fixed w-full shadow-sm top-0 z-[1000] items-center justify-between py-3 px-12 shadow-sm'>
+      {/* Logo */}
+      <div className='flex items-center gap-2'>
+        <div className='w-[35px] h-[35px] bg-[#DCFFAA] rounded-full'></div>
+        <h2 className='flex items-center text-[23px] font-[700] text-[#DCFFAA]'>
+          <span>A</span><span>2</span><span>Z</span>
+          <span> </span>
+          <span>H</span><span>e</span><span>a</span><span>l</span><span>t</span><span>h</span>
+          <span> </span>
+          <span>C</span><span>a</span><span>r</span><span>e</span>
+        </h2>
+      </div>
+      
+      {/* Navigation Links */}
+      <ul className='bg-white/40 backdrop-blur-sm py-3 px-5 rounded-full flex items-center gap-3'>
+        <Link 
+          to="/" 
+          className={`py-2 px-4 rounded-full transition-all duration-200 ${
+            location.pathname === '/' 
+              ? 'bg-white text-black' 
+              : 'text-black hover:bg-white/20'
+          }`}
+        >
+          Home
+        </Link>
+        
+        <Link 
+          to="/about" 
+          className={`py-2 px-4 rounded-full transition-all duration-200 ${
+            location.pathname === '/about' 
+              ? 'bg-white text-black' 
+              : 'text-black hover:bg-white/20'
+          }`}
+        >
+          About
+        </Link>
+        
+        <Link 
+          to="/services" 
+          className={`py-2 px-4 rounded-full transition-all duration-200 ${
+            location.pathname === '/services' 
+              ? 'bg-white text-black' 
+              : 'text-black hover:bg-white/20'
+          }`}
+        >
+          Services
+        </Link>
+        
+        <Link 
+          to="/career" 
+          className={`py-2 px-4 rounded-full transition-all duration-200 ${
+            location.pathname === '/career' 
+              ? 'bg-white text-black' 
+              : 'text-black hover:bg-white/20'
+          }`}
+        >
+          Career
+        </Link>
+        
+        <Link 
+          to="/blog" 
+          className={`py-2 px-4 rounded-full transition-all duration-200 ${
+            location.pathname === '/blog' 
+              ? 'bg-white text-black' 
+              : 'text-black hover:bg-white/20'
+          }`}
+        >
+          Blog
+        </Link>
+        
+        <Link 
+          to="/contact" 
+          className={`py-2 px-4 rounded-full transition-all duration-200 ${
+            location.pathname === '/contact' 
+              ? 'bg-white text-black' 
+              : 'text-black hover:bg-white/20'
+          }`}
+        >
+          Contact
+        </Link>
+      </ul>
+      
+      {/* Login Button */}
+      <button className='bg-white text-black py-2 px-5 rounded-full hover:bg-[#DCFFAA] transition-colors duration-200'>
+        Login
+      </button>
+    </div>
+  );
 }
-
-export default Navbar

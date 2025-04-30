@@ -1,10 +1,12 @@
-@import url("https://fonts.cdnfonts.com/css/general-sans");
-
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
+body{
+  font-family: "Mona Sans", sans-serif;
+}
 
 :root {
   --color-primary: #d53f41;
@@ -42,15 +44,6 @@ body {
   margin-bottom: 12px;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  line-height: 1.7;
-  letter-spacing: 1px;
-  background-color: var(--color-lighter);
-  color: var(--color-darker);
-}
 
 .wrapper {
   margin: 0 5vw;
@@ -433,6 +426,28 @@ section {
   height: 100vh;
 }
 
+.bm {
+  background-image: url(../src/assets/mm.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 152px;
+}
+
+.bm1 {
+  background-image: url(../src/assets/imag.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+}
+
 
 .bg2 {
   background-image: url(../src/assets/bg1.png);
@@ -446,18 +461,103 @@ section {
   justify-content: center;
   margin-top: 152px;
 }
-
-
-
-
-
-
-body {
-  width: 100dvw;
-  overflow-x: hidden;
-  background-color: #dfdff0;
-  font-family: "General Sans", sans-serif;
+.bgg3 {
+  background-image: url(../src/assets/bg2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
+.bg4 {
+  background-image: url(../src/assets/bg3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bg5 {
+  background-image: url(../src/assets/bg4.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bg6 {
+  background-image: url(../src/assets/bg5.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bg7 {
+  background-image: url(../src/assets/bg6.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bg8 {
+  background-image: url(../src/assets/bg7.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 677px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.bg3{
+  background-image: url(../src/assets/Group\ 29.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+}
+
+
+.bg1{
+  background-image: url(../src/assets/main.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+}
+
+
+
+
+
+
 
 @layer base {
   @font-face {
@@ -517,7 +617,7 @@ body {
   }
 
   .hero-heading {
-    @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+    @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[9rem];
   }
 
   .about-subtext {

@@ -6,6 +6,8 @@ import Services from '../pages/Services'
 import Blog from '../pages/Blog'
 import Contact from '../pages/Contact'
 import Carrier from '../pages/Carrier'
+import ServicesDetail from '../pages/ServicesDetail'
+import BlogDetail from '../pages/BlogDetail'
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -14,9 +16,11 @@ export const router = createBrowserRouter(
            <Route index element={<Home />} />
            <Route path='/about' element={<About />} />
            <Route path='/services' element={<Services />} />
+           <Route path='/servicesdetail' element={<ServicesDetail />} />
+           <Route path='/blogdetail' element={<BlogDetail />} />
            <Route path='/blog' element={<Blog />} />
            <Route path='/contact' element={<Contact />} />
-           <Route path='/carrer' element={<Carrier />} />
+           <Route path='/career' element={<Carrier />} />
         </Route>
         </>
     )
