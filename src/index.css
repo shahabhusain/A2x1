@@ -648,7 +648,7 @@ section {
   }
 
   .bento-title {
-    @apply uppercase md:text-6xl text-4xl font-black font-zentry;
+    @apply uppercase md:text-[34px] max-w-[355px] text-4xl font-[600] ;
   }
 
   .story-img-container {

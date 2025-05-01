@@ -53,53 +53,44 @@ const Features = () => {
 
         <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
           <BentoCard
-            src="videos/hero-1.mp4"
-            title={<>Pers<b>o</b>nalized Car<b>e</b></>}
-            description="Tailored treatment plans built around your unique health needs and lifestyle."
+            src="videos/hero-5.mp4"
+            title={<>Personal Care Assistance</>}
           />
         </BentoTilt>
 
         <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
-              src="videos/hero-2.mp4"
-              title={<>Wellness <b>N</b>avigator</>}
-              description="Your digital companion for preventive care, chronic condition support, and wellness tips."
+              src="videos/hero-6.mp4"
+              title={<>Dementia & Alzheimer’s Care</>}
             />
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard
-              src="videos/hero-3.mp4"
-              title={<>C<b>o</b>nnected Cl<b>i</b>nics</>}
-              description="Seamlessly access care across our network of hospitals, clinics, and telemedicine services."
+              src="videos/hero-1.mp4"
+              title={<>24/7 Live-in Care</>}
+            />
+          </BentoTilt>
+
+          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+            <BentoCard
+              src="videos/hero-2.mp4"
+              title={<>Respite Care</>}
             />
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
             <BentoCard
               src="videos/hero-4.mp4"
-              title={<>Heal<b>t</b>h Insights</>}
-              description="AI-powered analytics that help you track and optimize your health goals."
+              title={<>Post-Surgical Care</>}
             />
           </BentoTilt>
 
-          <BentoTilt className="bento-tilt_2">
-            <div className="flex size-full flex-col justify-between bg-[#659672] p-5">
-              <h1 className="bento-title special-font max-w-64 text-white">
-                New Se<b>r</b>vices La<b>u</b>nching Soon
-              </h1>
-              <TiLocationArrow className="m-5 scale-[5] self-end cursor-pointer" />
-            </div>
-          </BentoTilt>
-
-          <BentoTilt className="bento-tilt_2">
-            <video
-              src="videos/hero-2.mp4"
-              loop
-              muted
-              autoPlay
-              className="size-full object-center object-cover"
+          <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
+            <BentoCard
+              src="videos/hero-3.mp4"
+              title={<>Companion Care</>}
             />
           </BentoTilt>
         </div>
